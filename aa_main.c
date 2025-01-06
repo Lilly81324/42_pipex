@@ -6,26 +6,47 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:56:42 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/03 17:43:08 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/06 18:06:10 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	main(void)
+// returns a string consisting of the PATH enviroment 
+// variable given to the programm
+char	*ft_get_path(char *const envp[])
 {
-	int		fd;
-	char	*str;
-	char	*str2;
+	int	i;
 
-	fd = open("test.txt", O_RDONLY);
-	str = (char *)ft_calloc(4, sizeof(char));
-	str[0] = 'a';
-	str[1] = 'b';
-	str[2] = 'c';
-	str2 = get_next_line(fd);
-	ft_printf("working %i\n", ft_strlen(str));
-	ft_printf("-%s-\n", str2);
-	free(str2);
+	i = 0;
+	while (envp[i] != NULL)
+	{
+		if (ft_strncmp(envp[i], "PATH=", 5) == 0)
+			return (envp[i] + 5);
+		i++;
+	}
+	return (NULL);
+}
+
+int	main(int argc, char *argv[], char *envp[])
+{
+	int		i;
+	char	**paths;
+	char	*path;
+
+	if (argc == 1)
+	{
+		printf("No Command specified");
+		return (0);
+	}
+	i = 0;
+	paths = ft_split(ft_get_path(envp), ':');
+	path = ft_check_access(paths, "ls");
+	ft_free_char_arr_arr(paths);
+	if (path == NULL)
+		return (0);
+	printf("FILE PATH=%s\n", path);
+	execve(path, argv, NULL);
+	free(path);
 	return (0);
 }

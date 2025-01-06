@@ -4,7 +4,9 @@ CFLAGS = -Wall -Wextra -Werror
 LIBFT_DIR = ./libft
 LIBFT_LIB = $(LIBFT_DIR)/libft.a
 SRC_FILES = \
-aa_main.c
+aa_main.c \
+ft_check_access.c \
+ft_free_char_arr_arr.c
 OBJ_FILES = $(SRC_FILES:%.c=%.o)
 NAME = program
 
