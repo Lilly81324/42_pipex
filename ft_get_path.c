@@ -1,16 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_access.c                                  :+:      :+:    :+:   */
+/*   ft_get_path.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/06 16:33:19 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/06 18:01:58 by sikunne          ###   ########.fr       */
+/*   Created: 2025/01/07 15:23:06 by sikunne           #+#    #+#             */
+/*   Updated: 2025/01/07 17:00:51 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+// returns a string consisting of the PATH enviroment 
+// variable given to the programm
+static char	*ft_envp_path(char *const envp[])
+{
+	int	i;
+
+	i = 0;
+	while (envp[i] != NULL)
+	{
+		if (ft_strncmp(envp[i], "PATH=", 5) == 0)
+			return (envp[i] + 5);
+		i++;
+	}
+	return (NULL);
+}
 
 // creates a name by writing <path + / + name>
 // so <usr/bin/ls> into a string and returning it for use
@@ -31,7 +47,7 @@ static char	*ft_make_name(char *path, char *name)
 // returns either the full path+command as string
 // or NULL if error
 // gives out error codes for file not found and/or no permission to execute
-char	*ft_check_access(char **paths, char *name)
+static char	*ft_check_access(char **paths, char *name)
 {
 	int		i;
 	int		exists;
@@ -57,4 +73,27 @@ char	*ft_check_access(char **paths, char *name)
 	if (exists == 0 && acces != 0)
 		perror("No Permission to execute this command");
 	return (NULL);
+}
+
+// Tries to find the path of the binary  of the given command
+// from the enviroment pointer (PATHS) and returns
+// the path with the file, so /usr/bin/ls
+char	*ft_get_path(char **envp, char *cmd)
+{
+	char	**paths;
+	char	*path;
+
+	if (cmd == NULL)
+	{
+		perror("No Command specified");
+		return (NULL);
+	}
+	cmd = ft_space_bef(cmd);
+	paths = ft_split(ft_envp_path(envp), ':');
+	path = ft_check_access(paths, cmd);
+	free(cmd);
+	ft_free_char_arr_arr(paths);
+	if (path == NULL)
+		return (NULL);
+	return (path);
 }
