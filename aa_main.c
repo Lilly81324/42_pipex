@@ -6,7 +6,7 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:56:42 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/07 17:14:11 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/07 17:25:50 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,12 @@
 // So ./programm "/home" does what ls /home does
 int	main(int argc, char *argv[], char *envp[])
 {
-	ft_launcher(argc, argv, envp);
+	if (argc == 1)
+	{
+		printf("No Command specified\n");
+		return (0);
+	}
+	ft_launcher(argv, envp);
 	return (0);
 }
 

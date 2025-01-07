@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_launcher.c                                      :+:      :+:    :+:   */
+/*   ft_first_cmd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/07 17:09:14 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/07 17:24:08 by sikunne          ###   ########.fr       */
+/*   Created: 2025/01/07 17:17:53 by sikunne           #+#    #+#             */
+/*   Updated: 2025/01/07 17:32:14 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-// prepares the ingredients for the execve call
-void	ft_launcher(char *argv[], char *envp[])
+void	ft_first_cmd(char *path, char **new_argv, char *filename)
 {
-	char	*path;
-	char	**new_argv;
+	int	infile;
 
-	path = ft_get_path(envp, argv[2]);
-	new_argv = ft_get_arg_for_execve(argv[2]);
-	printf("FILE PATH=%s\n", path);
-	printf("Arguments:%s, %s\n", new_argv[0], new_argv[1]);
-	ft_run_cmd(path, new_argv, argv[1]);
-	free(path);
-	ft_free_char_arr_arr(new_argv);
+	infile = open(filename, O_RDONLY);
+	if (infile < 0)
+	{
+		perror("Error opening infile");
+		return ;
+	}
+	if (dup2(infile, STDIN_FILENO) < 0)
+	{
+		perror("Error redirecting stdin to infile");
+		close(infile);
+		return ;
+	}
+	close(infile);
+	execve(path, new_argv, NULL);
 }

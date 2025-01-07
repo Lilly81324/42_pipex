@@ -10,7 +10,8 @@ ft_get_path.c \
 ft_get_arg_for_execve.c \
 ft_space_bef.c \
 ft_space_aft.c \
-ft_launcher.c
+ft_launcher.c \
+ft_first_cmd.c
 OBJ_FILES = $(SRC_FILES:%.c=%.o)
 NAME = pipex
 
