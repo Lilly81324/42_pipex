@@ -6,7 +6,7 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 15:23:06 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/07 17:00:51 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/09 15:37:29 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,5 @@ char	*ft_get_path(char **envp, char *cmd)
 	path = ft_check_access(paths, cmd);
 	free(cmd);
 	ft_free_char_arr_arr(paths);
-	if (path == NULL)
-		return (NULL);
 	return (path);
 }

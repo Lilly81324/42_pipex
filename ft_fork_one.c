@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_launcher.c                                      :+:      :+:    :+:   */
+/*   ft_fork_one.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/07 17:09:14 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/08 16:21:05 by sikunne          ###   ########.fr       */
+/*   Created: 2025/01/09 16:23:52 by sikunne           #+#    #+#             */
+/*   Updated: 2025/01/09 17:42:19 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-// prepares the ingredients for the execve call
-void	ft_launcher(char *argv[], char *envp[])
+void	ft_fork_one(int *pipe, char *path, char **argv)
 {
-	char	*path;
-	char	**new_argv;
+	pid_t	pid;
+	int		status;
 
-	path = ft_get_path(envp, argv[2]);
-	new_argv = ft_get_arg_for_execve(argv[2]);
-	printf("FILE PATH=%s\n", path);
-	printf("Arguments:%s, %s\n", new_argv[0], new_argv[1]);
-	ft_first_cmd(path, new_argv, argv[1]);
-	free(path);
-	ft_free_char_arr_arr(new_argv);
+	pid = fork();
+	if (pid < 0)
+	{
+		perror("Error creating fork\n");
+		close(pipe[0]);
+		close(pipe[1]);
+		return ;
+	}
+	if (pid == 0)
+	{
+		close(pipe[0]);
+		execve(path, argv, NULL);
+	}
+	waitpid(pid, &status, 0);
 }

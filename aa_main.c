@@ -6,7 +6,7 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:56:42 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/07 17:25:50 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/08 17:12:24 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,14 @@ int	main(int argc, char *argv[], char *envp[])
 	return (0);
 }
 
-// stdin would be redirected to infile
-// int infile = open("infile", O_RDONLY);
-// dup2(infile, STDIN_FILENO)
-// close(infile); // infile is no longer needed after dup2
-// ./pipex <input file name> <command with arguments> | -""-
+// Right now we have infile in stdin
+// then we execute a execve process.
+// that process uses stdin and outputs to stdout
+
+// we have to redirect stdout to stdin of another process
+// that we do through piping
+// in the new process we set stdout to some filedescriptor in write mode
+// the new process is ran with execve
+
+// do we need fork?
+// 
