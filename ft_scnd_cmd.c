@@ -1,39 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_first_cmd.c                                     :+:      :+:    :+:   */
+/*   ft_scnd_cmd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/07 17:17:53 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/10 13:55:09 by sikunne          ###   ########.fr       */
+/*   Created: 2025/01/10 13:56:22 by sikunne           #+#    #+#             */
+/*   Updated: 2025/01/10 14:12:03 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-// redirect stdin for first command to filename
-// then run the pipe redirection
-int	ft_first_cmd(char *path, char **new_argv, char *filename)
+int	ft_scnd_cmd(char *path, char **new_argv, char *filename, int r_end)
 {
-	int	infile;
-	int	pipe_r_end;
+	int	outfile;
 
-	infile = open(filename, O_RDONLY);
-	if (infile < 0)
+	outfile = open(filename, O_RDWR);
+	if (outfile < 0)
 	{
-		perror("Error opening infile");
+		perror("Error opening outfile");
 		return (-1);
 	}
-	if (dup2(infile, STDIN_FILENO) < 0)
+	if (dup2(outfile, STDOUT_FILENO) < 0)
 	{
 		perror("Error redirecting stdin to infile");
-		close(infile);
+		close(outfile);
 		return (-1);
 	}
-	close(infile);
-	pipe_r_end = ft_first_cmd_pipe(path, new_argv);
-	if (pipe_r_end < 0)
+	close(outfile);
+	if (dup2(r_end, STDIN_FILENO) < 0)
+	{
+		perror("Error redirecting read end to stdin");
+		close(r_end);
 		return (-1);
-	return (pipe_r_end);
+	}
+	close(r_end);
+	if (ft_fork_two(path, new_argv) == -1)
+		return (-1);
+	return (0);
 }

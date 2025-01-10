@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   aa_main.c                                          :+:      :+:    :+:   */
+/*   ft_run_cmd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 15:56:42 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/10 13:43:32 by sikunne          ###   ########.fr       */
+/*   Created: 2025/01/10 13:45:38 by sikunne           #+#    #+#             */
+/*   Updated: 2025/01/10 13:50:50 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-// Right now it runs ls with the arguments givne to the programm
-// So ./programm "/home" does what ls /home does
-int	main(int argc, char *argv[], char *envp[])
+// should close pipe
+int	ft_first_cmd(char *path, char **new_argv, int fd_in, int fd_out)
 {
-	if (argc == 1)
-	{
-		printf("No Command specified\n");
-		return (0);
-	}
-	ft_launcher(argv, envp);
-	return (0);
-}
+	pid_t	pid;
 
-/// need func(argv[2]/argv[3], from fd, to fd)
-//	func(argv[2], infile_fd, pipe[1])
-//	func(argv[2], pipe[0], outfile_fd)
+	pid = fork();
+	if (pid < 0)
+	{
+		perror("Error creating fork");
+		return (-1);
+	}
+	if (pid == 0)
+	{
+		execve(path, new_argv, NULL);
+	}
+}

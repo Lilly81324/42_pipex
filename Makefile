@@ -13,7 +13,9 @@ ft_space_aft.c \
 ft_launcher.c \
 ft_first_cmd.c \
 ft_first_cmd_pipe.c \
-ft_fork_one.c
+ft_fork_one.c \
+ft_scnd_cmd.c \
+ft_fork_two.c
 OBJ_FILES = $(SRC_FILES:%.c=%.o)
 NAME = pipex
 

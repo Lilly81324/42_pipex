@@ -6,7 +6,7 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:23:52 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/09 18:01:31 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/10 13:36:52 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	ft_fork_one(int *pipe, char *path, char **argv)
 	{
 		perror("Error creating fork\n");
 		close(pipe[0]);
-		close(pipe[1]);
 		return ;
 	}
 	if (pid == 0)

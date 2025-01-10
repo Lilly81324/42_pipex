@@ -6,7 +6,7 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:39:33 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/09 18:32:38 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/10 13:53:38 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 int	ft_first_cmd_pipe(char *path, char **new_argv)
 {
 	int		pipe_one[2];
-	char	buff[200];
 	int		stdout_copy;
-	size_t	bytes;
 
 	stdout_copy = dup(STDOUT_FILENO);
 	if (pipe(pipe_one) == -1)
@@ -35,14 +33,5 @@ int	ft_first_cmd_pipe(char *path, char **new_argv)
 	close(pipe_one[1]);
 	ft_fork_one(pipe_one, path, new_argv);
 	write(STDOUT_FILENO, "\0", 1);
-	bytes = read(pipe_one[0], buff, 150);
-	close(pipe_one[0]);
-	if (dup2(stdout_copy, STDOUT_FILENO) < 0)
-	{
-		perror("didnt redirect back");
-		return (0);
-	}
-	printf("-%s-\n", buff);
-	printf("read: %zu bytes\n", bytes);
 	return (pipe_one[0]);
 }
