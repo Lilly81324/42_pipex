@@ -6,7 +6,7 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 13:56:22 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/10 15:19:27 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/10 16:05:29 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,5 @@ int	ft_scnd_cmd(char *path, char **new_argv, char *filename, int r_end)
 	close(r_end);
 	if (ft_fork_two(path, new_argv) == -1)
 		return (-1);
-	printf("Working\n");
 	return (0);
 }

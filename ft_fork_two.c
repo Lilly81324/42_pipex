@@ -6,7 +6,7 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:23:52 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/10 15:29:38 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/10 16:04:27 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	ft_fork_two(char *path, char **argv)
 	int		status;
 
 	pid = fork();
-	printf("pid\n");
 	if (pid < 0)
 	{
 		perror("Error creating fork\n");
@@ -26,10 +25,8 @@ int	ft_fork_two(char *path, char **argv)
 	}
 	if (pid == 0)
 	{
-		printf("child\n");
 		execve(path, argv, NULL);
 	}
 	waitpid(pid, &status, 0);
-	printf("parent\n");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 17:09:14 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/10 15:25:08 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/10 16:05:08 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,10 @@ void	ft_launcher(char *argv[], char *envp[])
 
 	path = ft_get_path(envp, argv[2]);
 	new_argv = ft_get_arg_for_execve(argv[2]);
-	printf("FILE PATH=%s\n", path);
-	printf("Arguments:%s, %s\n", new_argv[0], new_argv[1]);
 	r_end = ft_first_cmd(path, new_argv, argv[1]);
 	path = ft_get_path(envp, argv[3]);
 	new_argv = ft_get_arg_for_execve(argv[3]);
 	ft_scnd_cmd(path, new_argv, argv[4], r_end);
-	printf("FILE PATH=%s\n", path);
-	printf("Arguments:%s, %s\n", new_argv[0], new_argv[1]);
 	free(path);
 	ft_free_char_arr_arr(new_argv);
 }

@@ -6,7 +6,7 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:39:33 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/10 13:53:38 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/10 16:04:29 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,5 @@ int	ft_first_cmd_pipe(char *path, char **new_argv)
 	}
 	close(pipe_one[1]);
 	ft_fork_one(pipe_one, path, new_argv);
-	write(STDOUT_FILENO, "\0", 1);
 	return (pipe_one[0]);
 }
