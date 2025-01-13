@@ -6,7 +6,7 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 16:31:39 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/07 17:03:19 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/13 15:20:34 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ char	*ft_space_bef(char *str)
 		return (NULL);
 	while (str[i] != '\0' && str[i] != ' ')
 		i++;
+	if (i == 0)
+		return (NULL);
 	new_str = (char *)malloc((i + 1) * sizeof(char));
 	i = 0;
 	while (str[i] != '\0' && str[i] != ' ')

@@ -6,7 +6,7 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:42:19 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/10 14:09:35 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/13 15:18:59 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,12 @@ void	ft_free_char_arr_arr(char **target);
 char	**ft_get_arg_for_execve(char *arg1);
 char	*ft_space_bef(char *str);
 char	*ft_space_aft(char *str);
-void	ft_launcher(char *argv[], char *envp[]);
-int		ft_first_cmd(char *path, char **new_argv, char *filename);
-int		ft_first_cmd_pipe(char *path, char **new_argv);
-void	ft_fork_one(int *pipe, char *path, char **argv);
-int		ft_scnd_cmd(char *path, char **new_argv, char *filename, int r_end);
-int		ft_fork_two(char *path, char **argv);
+int		ft_launcher(char *argv[], char *envp[]);
+int		ft_prepare_first(char *path, char **argv, char *filename);
+int		ft_prepare_sec(char *path, char **argv, char *filename, int r_end);
+int		ft_stdin_to_infile(char *filename);
+int		ft_stdin_to_pipe(int r_end);
+int		ft_stdout_to_outfile(char *filename);
+int		ft_stdout_to_pipe(void);
 
 #endif

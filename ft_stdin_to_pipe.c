@@ -1,42 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_scnd_cmd.c                                      :+:      :+:    :+:   */
+/*   ft_stdin_to_pipe.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 13:56:22 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/10 16:05:29 by sikunne          ###   ########.fr       */
+/*   Created: 2025/01/13 15:14:02 by sikunne           #+#    #+#             */
+/*   Updated: 2025/01/13 15:14:05 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	ft_scnd_cmd(char *path, char **new_argv, char *filename, int r_end)
+// redirects STDIN to the read end of a pipe
+// returns 0
+// returns -1 if error
+int	ft_stdin_to_pipe(int r_end)
 {
-	int	outfile;
-
-	outfile = open(filename, O_RDWR);
-	if (outfile < 0)
+	if (r_end == -1)
 	{
-		perror("Error opening outfile");
+		perror("Error with read end of pipe");
 		return (-1);
 	}
-	if (dup2(outfile, STDOUT_FILENO) < 0)
-	{
-		perror("Error redirecting stdin to infile");
-		close(outfile);
-		return (-1);
-	}
-	close(outfile);
 	if (dup2(r_end, STDIN_FILENO) < 0)
 	{
-		perror("Error redirecting read end to stdin");
+		perror("Error redirecting stdin to read end of pipe");
 		close(r_end);
 		return (-1);
 	}
 	close(r_end);
-	if (ft_fork_two(path, new_argv) == -1)
-		return (-1);
 	return (0);
 }

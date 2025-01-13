@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_first_cmd_pipe.c                                :+:      :+:    :+:   */
+/*   ft_stdout_to_pipe.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/08 16:39:33 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/10 16:04:29 by sikunne          ###   ########.fr       */
+/*   Created: 2025/01/13 15:12:56 by sikunne           #+#    #+#             */
+/*   Updated: 2025/01/13 15:13:40 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	ft_first_cmd_pipe(char *path, char **new_argv)
+// redirects STDOUT to the write end of a pipe
+// returns the read end fd of that pipe (needs closing)
+// returns -1 if error
+int	ft_stdout_to_pipe(void)
 {
-	int		pipe_one[2];
-	int		stdout_copy;
+	int	pipe_one[2];
 
-	stdout_copy = dup(STDOUT_FILENO);
 	if (pipe(pipe_one) == -1)
 	{
 		perror("Error creating pipe\n");
@@ -31,6 +32,5 @@ int	ft_first_cmd_pipe(char *path, char **new_argv)
 		return (-1);
 	}
 	close(pipe_one[1]);
-	ft_fork_one(pipe_one, path, new_argv);
 	return (pipe_one[0]);
 }
