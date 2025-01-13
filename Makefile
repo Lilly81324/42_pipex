@@ -5,17 +5,18 @@ LIBFT_DIR = ./libft
 LIBFT_LIB = $(LIBFT_DIR)/libft.a
 SRC_FILES = \
 aa_main.c \
+ft_launcher.c \
 ft_free_char_arr_arr.c \
 ft_get_path.c \
 ft_get_arg_for_execve.c \
 ft_space_bef.c \
 ft_space_aft.c \
-ft_launcher.c \
-ft_first_cmd.c \
-ft_first_cmd_pipe.c \
-ft_fork_one.c \
-ft_scnd_cmd.c \
-ft_fork_two.c
+ft_prepare_first.c \
+ft_prepare_sec.c \
+ft_stdin_to_infile.c \
+ft_stdin_to_pipe.c \
+ft_stdout_to_outfile.c \
+ft_stdout_to_pipe.c
 OBJ_FILES = $(SRC_FILES:%.c=%.o)
 NAME = pipex
 
