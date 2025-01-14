@@ -6,13 +6,16 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 17:09:14 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/13 15:30:49 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/14 14:12:38 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-// prepares the ingredients for the execve call
+// runs most of the code for main
+// defines path of binary file for execve call
+// creates arguments for the shell exceve call
+// then sets up whatever file linkin is neccesary 
 int	ft_launcher(char *argv[], char *envp[])
 {
 	char	*path;
