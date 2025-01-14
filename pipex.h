@@ -6,7 +6,7 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:42:19 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/13 15:18:59 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/14 18:31:40 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ int		ft_stdin_to_infile(char *filename);
 int		ft_stdin_to_pipe(int r_end);
 int		ft_stdout_to_outfile(char *filename);
 int		ft_stdout_to_pipe(void);
+int		ft_cooler_open(char *filename);
 
 #endif

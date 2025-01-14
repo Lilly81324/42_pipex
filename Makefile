@@ -15,7 +15,8 @@ ft_prepare_sec.c \
 ft_stdin_to_infile.c \
 ft_stdin_to_pipe.c \
 ft_stdout_to_outfile.c \
-ft_stdout_to_pipe.c
+ft_stdout_to_pipe.c \
+ft_cooler_open.c
 SRC_MAIN = aa_main.c
 OBJ_MAIN = $(SRC_MAIN:%.c=%.o)
 BNS_SRC_FILES = \

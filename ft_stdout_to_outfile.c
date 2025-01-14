@@ -6,7 +6,7 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 15:14:22 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/13 15:14:24 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/14 18:32:09 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_stdout_to_outfile(char *filename)
 {
 	int	outfile;
 
-	outfile = open(filename, O_RDWR);
+	outfile = ft_cooler_open(filename);
 	if (outfile < 0)
 	{
 		perror("Error opening outfile");

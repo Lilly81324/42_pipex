@@ -6,7 +6,7 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 15:13:26 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/13 15:13:40 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/14 18:31:56 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_stdin_to_infile(char *filename)
 {
 	int	infile;
 
-	infile = open(filename, O_RDONLY);
+	infile = ft_cooler_open(filename);
 	if (infile < 0)
 	{
 		perror("Error opening infile");
