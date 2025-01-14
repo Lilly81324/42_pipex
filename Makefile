@@ -23,7 +23,7 @@ aa_main_bonus.c \
 ft_first_cmd_bonus.c \
 ft_handle_first_bonus.c \
 ft_handle_mid_bonus.c \
-ft handle_last_bonus.c \
+ft_handle_last_bonus.c \
 ft_last_cmd_bonus.c \
 ft_mid_cmd_bonus.c
 OBJ_FILES = $(SRC_FILES:%.c=%.o)
@@ -49,7 +49,7 @@ $(LIBFT_LIB):
 
 clean:
 	make -C $(LIBFT_DIR) clean
-	rm -rf $(OBJ_FILES)
+	rm -rf $(OBJ_FILES) $(OBJ_MAIN)
 	rm -f $(BNS_OBJ_FILES)
 
 fclean: clean

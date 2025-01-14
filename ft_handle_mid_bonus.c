@@ -6,7 +6,7 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 14:23:33 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/14 15:18:29 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/14 16:09:09 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	ft_handle_mid(char *argv[], char *envp[], int r_end)
 	argc -= 4;
 	while (pos < argc)
 	{
-		printf("<<MID>>\n");
 		path = ft_get_path(envp, argv[argc + 2]);
 		if (path == NULL)
 			return (-1);

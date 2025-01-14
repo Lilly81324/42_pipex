@@ -6,7 +6,7 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:56:42 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/14 15:22:50 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/14 16:05:19 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,3 +34,10 @@ int	main(int argc, char *argv[], char *envp[])
 		return (-1);
 	return (0);
 }
+
+// r_end = ft_handle_mid(argv, envp, r_end);
+// 	if (r_end < 0)
+// 		return (-1);
+// 	r_end = ft_handle_last(argv, envp, r_end);
+// 	if (r_end < 0)
+// 		return (-1);
