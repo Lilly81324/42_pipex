@@ -6,12 +6,18 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 18:11:23 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/14 18:56:44 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/15 14:20:00 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+// translates files that have no ./ in front but should into ./file
+// three cases:
+// works for absoulte paths like /home/sikunne/file.exe
+// and also for relative paths file.exe, ./file.exe, dir/file.exe
+// allocates and frees itself
+// returns the opened fd, which needs to be closed later
 int	ft_cooler_open(char *filename)
 {
 	int		i;
@@ -21,8 +27,7 @@ int	ft_cooler_open(char *filename)
 	i = 2;
 	if (filename[0] == '/')
 		fd = open(filename, O_RDWR);
-	else if (ft_strchr(filename, '/') == NULL || (filename[0] == '.'
-			&& filename[1] == '/'))
+	else if (filename[0] == '.' && filename[1] == '/')
 		fd = open(filename, O_RDWR);
 	else
 	{
