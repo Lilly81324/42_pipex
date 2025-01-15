@@ -6,7 +6,7 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 15:40:45 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/07 17:06:08 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/15 16:35:59 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ char	**ft_get_arg_for_execve(char *arg1)
 	result[0] = ft_space_bef(arg1);
 	result[1] = ft_space_aft(arg1);
 	result[2] = NULL;
+	// printf("Arguments: 0 is %s and 1 is %s\n", result[0], result[1]);
 	return (result);
 }
