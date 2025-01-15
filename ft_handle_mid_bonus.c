@@ -6,7 +6,7 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 14:23:33 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/14 16:09:09 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/15 15:58:35 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ int	ft_handle_mid(char *argv[], char *envp[], int r_end)
 	argc -= 4;
 	while (pos < argc)
 	{
-		path = ft_get_path(envp, argv[argc + 2]);
+		path = ft_get_path(envp, argv[pos + 3]);
 		if (path == NULL)
 			return (-1);
-		new_argv = ft_get_arg_for_execve(argv[argc + 2]);
+		new_argv = ft_get_arg_for_execve(argv[pos + 3]);
 		r_end = ft_mid_cmd(path, new_argv, r_end);
 		free(path);
 		ft_free_char_arr_arr(new_argv);
