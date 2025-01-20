@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_arg_for_execve.c                            :+:      :+:    :+:   */
+/*   ft_get_arg_for_execve OLD.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 15:40:45 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/20 15:47:23 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/20 16:07:46 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,3 +146,7 @@ char	**ft_split_quot(char const *s, char c)
 	}
 	return (result);
 }
+
+// Right now abc'def'ghi
+// gets treated as such
+// but we want abc def ghi

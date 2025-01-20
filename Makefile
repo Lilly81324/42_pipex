@@ -16,16 +16,16 @@ ft_stdin_to_infile.c \
 ft_stdin_to_pipe.c \
 ft_stdout_to_outfile.c \
 ft_stdout_to_pipe.c \
-ft_cooler_open.c
+ft_cooler_open.c \
+ft_handle_first.c \
+ft_first_cmd.c \
+ft_handle_last.c \
+ft_last_cmd.c
 SRC_MAIN = aa_main.c
 OBJ_MAIN = $(SRC_MAIN:%.c=%.o)
 BNS_SRC_FILES = \
 aa_main_bonus.c \
-ft_first_cmd_bonus.c \
-ft_handle_first_bonus.c \
 ft_handle_mid_bonus.c \
-ft_handle_last_bonus.c \
-ft_last_cmd_bonus.c \
 ft_mid_cmd_bonus.c
 OBJ_FILES = $(SRC_FILES:%.c=%.o)
 BNS_OBJ_FILES = $(BNS_SRC_FILES:%.c=%.o)

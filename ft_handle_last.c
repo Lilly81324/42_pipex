@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_handle_last_bonus.c                             :+:      :+:    :+:   */
+/*   ft_handle_last.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:09:44 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/20 16:01:45 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/20 16:15:34 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	ft_handle_last(char *argv[], char *envp[], int r_end)
 	if (new_argv == NULL)
 		return (-1);
 	r_end = ft_last_cmd(path, new_argv, argv[ind_end], r_end);
-	printf("Running %s %s", new_argv[0], new_argv[1]);
 	free(path);
 	ft_free_char_arr_arr(new_argv);
 	if (r_end < 1)

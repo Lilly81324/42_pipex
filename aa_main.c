@@ -6,7 +6,7 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:56:42 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/14 16:11:37 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/20 16:09:20 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 // its output into the "outfile" (fourth argument) by overwriting from start
 int	main(int argc, char *argv[], char *envp[])
 {
+	int	r_end;
+
 	if (argc < 5)
 	{
 		perror("Need 4 arguments <infile> <cmd1> <cmd2> <outfile>");
@@ -30,5 +32,11 @@ int	main(int argc, char *argv[], char *envp[])
 		perror("Too many arguments, only 4 are acceptable");
 		return (-1);
 	}
-	return (ft_launcher(argv, envp));
+	r_end = ft_handle_first(argv, envp);
+	if (r_end < 0)
+		return (-1);
+	r_end = ft_handle_last(argv, envp, r_end);
+	if (r_end < 0)
+		return (-1);
+	return (0);
 }
