@@ -4,10 +4,8 @@ CFLAGS = -Wall -Wextra -Werror
 LIBFT_DIR = ./libft
 LIBFT_LIB = $(LIBFT_DIR)/libft.a
 SRC_FILES = \
-ft_launcher.c \
 ft_free_char_arr_arr.c \
 ft_get_path.c \
-ft_get_arg_for_execve.c \
 ft_space_bef.c \
 ft_space_aft.c \
 ft_prepare_first.c \
@@ -20,7 +18,8 @@ ft_cooler_open.c \
 ft_handle_first.c \
 ft_first_cmd.c \
 ft_handle_last.c \
-ft_last_cmd.c
+ft_last_cmd.c \
+ft_split_quot_ex.c
 SRC_MAIN = aa_main.c
 OBJ_MAIN = $(SRC_MAIN:%.c=%.o)
 BNS_SRC_FILES = \

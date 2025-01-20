@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_arg_for_execve.c                            :+:      :+:    :+:   */
+/*   ft_split_quot_inc.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 15:40:45 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/20 16:07:47 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/20 18:17:09 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,10 +117,12 @@ static int	ft_splitter(char const *s, char c, char **result)
 }
 
 // Version of ft_split that respect things in quotes
+// includes quotes from string and views everything as part of word
+// "abc'def' ghi" -> abc'def', ghi
 // This function is the central function, it uses...
 // ...the other functions to split a string into...
 // smaller strings and returns that array of arrays
-char	**ft_split_quot(char const *s, char c)
+char	**ft_split_quot_inc(char const *s, char c)
 {
 	int		count;
 	char	**result;
