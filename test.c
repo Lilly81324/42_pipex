@@ -1,56 +1,71 @@
-#include <stdio.h>
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/20 15:24:40 by sikunne           #+#    #+#             */
+/*   Updated: 2025/01/20 15:24:40 by sikunne          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int	move_until(char *s, int	i, char	opt)
-{
-	i++;
-	while (s[i] != opt && s[i] != '\0')
-		i++;
-	if (s[i] == '\0')
-	{
-		perror("Error, quotation mark not closed properly");
-		return (-1);
-	}
-	else
-		i++;
-	return (i);
-}
+#include "pipex_bonus.h"
 
-// returns how many "words" are in a string
-int	get_sets(char *s, char c)
-{
-	int		i;
-	int		strings;
+// 0-9
+// int	main(int argc, char *argv[])
+// {
+// 	int		i;
+// 	char	**str;
+// 	i = -1;
+// 	while (++i < 10)
+// 		printf("%i\n", i);
+// 	return (0);
+// }
 
-	i = 0;
-	strings = 0;
-	while(s[i] != '\0')
-	{
-		while(s[i] == c)
-			i++;
-		if (s[i] != '\0' && s[i] != c)
-			strings++;
-		while (s[i] != '\0' && s[i] != c)
-		{
-			i++;
-			if (s[i - 1] == '\'')
-				i = move_until(s, i, '\'');
-			else if (s[i - 1] == '\"')
-				i = move_until(s, i, '\"');
-			if (i < 0)
-				return (-1);
-		}
-	}
-	return (strings);
-}
+// 1-9
+// int	main(int argc, char *argv[])
+// {
+// 	int		i;
+// 	char	**str;
+// 	i = 0;
+// 	while (++i < 10)
+// 		printf("%i\n", i);
+// 	return (0);
+// }
 
-int main(int argc, char *argv[])
-{
-	int		i;
-	char	*str;
+// 0-10
+// int	main(int argc, char *argv[])
+// {
+// 	int		i;
+// 	char	**str;
+// 	i = -1;
+// 	while (i++ < 10)
+// 		printf("%i\n", i);
+// 	return (0);
+// }
 
-	if (argc == 1)
-		return (0);
-	i = get_sets(argv[1], ' ');
-	return (0);
-}
+// 1-10
+// int	main(int argc, char *argv[])
+// {
+// 	int		i;
+// 	char	**str;
+// 	i = 0;
+// 	while (i++ < 10)
+// 		printf("%i\n", i);
+// 	return (0);
+// }
+
+// 0-9
+// int	main(int argc, char *argv[])
+// {
+// 	int		i;
+// 	char	**str;
+// 	i = 0;
+// 	while (i < 10)
+// 	{
+// 		printf("%i\n", i);
+// 		i++;
+// 	}
+// 	return (0);
+// }

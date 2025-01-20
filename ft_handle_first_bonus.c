@@ -6,7 +6,7 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 14:58:40 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/14 15:43:49 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/20 15:51:04 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ int	ft_handle_first(char *argv[], char *envp[])
 	path = ft_get_path(envp, argv[2]);
 	if (path == NULL)
 		return (-1);
-	new_argv = ft_get_arg_for_execve(argv[2]);
+	new_argv = ft_split_quot(argv[2], ' ');
+	if (new_argv == NULL)
+		return (-1);
 	r_end = ft_first_cmd(path, new_argv, argv[1]);
 	free(path);
 	ft_free_char_arr_arr(new_argv);

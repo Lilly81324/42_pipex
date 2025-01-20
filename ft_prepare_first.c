@@ -6,7 +6,7 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:17:58 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/13 15:13:34 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/20 15:46:33 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_prepare_first(char *path, char **argv, char *filename)
 	pid_t	pid;
 	int		r_end;
 
-	if (ft_stdin_to_infile(filename) < 0)
+	if (ft_stdin_to_infile(filename) < 0 || argv == NULL)
 		return (-1);
 	r_end = ft_stdout_to_pipe();
 	if (r_end < 0)
