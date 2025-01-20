@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   aa_main.c                                          :+:      :+:    :+:   */
+/*   aa_main_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:56:42 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/14 16:16:47 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/14 16:05:19 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
-// Runs two shell commands with custom input and output 
-// Usage ./pipex <infile> <cmd1> <cmd2> <outfile>
-// Uses the contents of the "infile" (first argument) as input
-// for the shell command "cmd1" (second argument) which gives its output
-// as input for the second command "cmd2" (third argument) which gives
-// its output into the "outfile" (fourth argument) by overwriting from start
+// Right now it runs ls with the arguments givne to the programm
+// So ./programm "/home" does what ls /home does
 int	main(int argc, char *argv[], char *envp[])
 {
 	int	r_end;
 
 	if (argc < 5)
 	{
-		perror("Need 4 arguments <infile> <cmd1> <cmd2> <outfile>");
-		return (-1);
-	}
-	if (argc > 5)
-	{
-		perror("Too many arguments, only 4 are acceptable");
+		perror("Need at least 4 arguments <infile> <cmd1> <cmd2> <outfile>");
 		return (-1);
 	}
 	r_end = ft_handle_first(argv, envp);
+	if (r_end < 0)
+		return (-1);
+	r_end = ft_handle_mid(argv, envp, r_end);
 	if (r_end < 0)
 		return (-1);
 	r_end = ft_handle_last(argv, envp, r_end);
@@ -40,3 +34,10 @@ int	main(int argc, char *argv[], char *envp[])
 		return (-1);
 	return (0);
 }
+
+// r_end = ft_handle_mid(argv, envp, r_end);
+// 	if (r_end < 0)
+// 		return (-1);
+// 	r_end = ft_handle_last(argv, envp, r_end);
+// 	if (r_end < 0)
+// 		return (-1);

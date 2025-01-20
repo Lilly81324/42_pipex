@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_prepare_first.c                                 :+:      :+:    :+:   */
+/*   ft_last_cmd_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 17:17:58 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/20 15:46:33 by sikunne          ###   ########.fr       */
+/*   Created: 2025/01/14 15:13:07 by sikunne           #+#    #+#             */
+/*   Updated: 2025/01/14 16:00:01 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 // prepares stdin and stdout for the first command
 // then uses forking and waitpid to run the command
 // frees path and argv given
 // returns read_end fd of pipe (needs closing)
 // returns -1 if error
-int	ft_prepare_first(char *path, char **argv, char *filename)
+int	ft_last_cmd(char *path, char **argv, char *filename, int r_end)
 {
 	pid_t	pid;
-	int		r_end;
 
-	if (ft_stdin_to_infile(filename) < 0 || argv == NULL)
+	if (ft_stdin_to_pipe(r_end))
 		return (-1);
-	r_end = ft_stdout_to_pipe();
-	if (r_end < 0)
+	if (ft_stdout_to_outfile(filename) < 0)
 		return (-1);
 	pid = fork();
 	if (pid < 0)
@@ -34,10 +32,7 @@ int	ft_prepare_first(char *path, char **argv, char *filename)
 		return (-1);
 	}
 	if (pid == 0)
-	{
-		close(r_end);
 		execve(path, argv, NULL);
-	}
 	waitpid(pid, NULL, 0);
-	return (r_end);
+	return (0);
 }

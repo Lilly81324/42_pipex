@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_launcher.c                                      :+:      :+:    :+:   */
+/*   ft_handle_first.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/07 17:09:14 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/13 15:30:49 by sikunne          ###   ########.fr       */
+/*   Created: 2025/01/14 14:58:40 by sikunne           #+#    #+#             */
+/*   Updated: 2025/01/20 18:19:15 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
-// prepares the ingredients for the execve call
-int	ft_launcher(char *argv[], char *envp[])
+// sets up the reading in of the first file as well as execution of first 
+// command 
+// returns r_end of pipe it wrote to
+// returns -1 if error
+int	ft_handle_first(char *argv[], char *envp[])
 {
 	char	*path;
 	char	**new_argv;
@@ -22,20 +25,13 @@ int	ft_launcher(char *argv[], char *envp[])
 	path = ft_get_path(envp, argv[2]);
 	if (path == NULL)
 		return (-1);
-	new_argv = ft_get_arg_for_execve(argv[2]);
-	r_end = ft_prepare_first(path, new_argv, argv[1]);
+	new_argv = ft_split_quot_ex(argv[2], ' ');
+	if (new_argv == NULL)
+		return (-1);
+	r_end = ft_first_cmd(path, new_argv, argv[1]);
 	free(path);
 	ft_free_char_arr_arr(new_argv);
 	if (r_end < 1)
 		return (-1);
-	path = ft_get_path(envp, argv[3]);
-	if (path == NULL)
-		return (-1);
-	new_argv = ft_get_arg_for_execve(argv[3]);
-	ft_prepare_sec(path, new_argv, argv[4], r_end);
-	free(path);
-	ft_free_char_arr_arr(new_argv);
-	if (r_end < 1)
-		return (-1);
-	return (0);
+	return (r_end);
 }

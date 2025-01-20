@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stdin_to_infile.c                               :+:      :+:    :+:   */
+/*   ft_mid_cmd_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 15:13:26 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/14 18:31:56 by sikunne          ###   ########.fr       */
+/*   Created: 2025/01/14 15:18:23 by sikunne           #+#    #+#             */
+/*   Updated: 2025/01/14 15:18:25 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
-// opens a file by name in RD_ONLY
-// redirects STDIN to that file
-// closes the file itself directly
-// returns -1 if error
-int	ft_stdin_to_infile(char *filename)
+int	ft_mid_cmd(char *path, char *argv[], int r_end)
 {
-	int	infile;
+	pid_t	pid;
 
-	infile = ft_cooler_open(filename);
-	if (infile < 0)
+	if (ft_stdin_to_pipe(r_end) < 0)
+		return (-1);
+	r_end = ft_stdout_to_pipe();
+	if (r_end < 0)
+		return (-1);
+	pid = fork();
+	if (pid < 0)
 	{
-		perror("Error opening infile");
+		perror("Error creating fork\n");
 		return (-1);
 	}
-	if (dup2(infile, STDIN_FILENO) < 0)
+	if (pid == 0)
 	{
-		perror("Error redirecting stdin to infile");
-		close(infile);
-		return (-1);
+		close(r_end);
+		execve(path, argv, NULL);
 	}
-	close(infile);
-	return (0);
+	waitpid(pid, NULL, 0);
+	return (r_end);
 }
