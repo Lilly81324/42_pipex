@@ -6,12 +6,15 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:09:44 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/20 18:18:43 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/21 15:01:45 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
 
+// same thing as ft_handle_first, but for the last
+// command, which gets written into an outfile instead of a pipe
+// returns 0 if norminal or -1 if error
 int	ft_handle_last(char *argv[], char *envp[], int r_end)
 {
 	char	*path;

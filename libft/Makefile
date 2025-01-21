@@ -6,7 +6,7 @@ BASE_LIBFT_FILES = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft
 BONUS_LIBFT_FILES = ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c 
 PRINTF_FILES = ft_char_in_str.c ft_handle_diff.c ft_handle_specials.c ft_handle_strings.c ft_percent_strlen.c ft_print_char.c ft_printf.c ft_print_int.c ft_print_ptr.c ft_print_str.c ft_print_unsint.c ft_print_x.c ft_print_xcap.c ft_ptr_to_hex.c
 GET_NEXT_FILES = get_next_line.c get_next_line_utils.c
-BASE_SRC = $(BASE_LIBFT_FILES) $(PRINTF_FILES) $(GET_NEXT_FILES)
+BASE_SRC = $(BASE_LIBFT_FILES)
 BONUS_SRC = $(BONUS_LIBFT_FILES) $(BASE_SRC)
 BASE_OBJ = $(BASE_SRC:%.c=%.o)
 BONUS_OBJ = $(BONUS_SRC:%.c=%.o)

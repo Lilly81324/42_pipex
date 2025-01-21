@@ -6,12 +6,15 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:18:23 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/14 15:18:25 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/21 15:03:03 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
 
+// similar behaviour to handle_first and handle_last
+// but it reads from one pipe and writes to another
+// returns -1 if error
 int	ft_mid_cmd(char *path, char *argv[], int r_end)
 {
 	pid_t	pid;

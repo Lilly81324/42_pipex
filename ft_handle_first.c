@@ -6,14 +6,14 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 14:58:40 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/20 18:19:15 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/21 15:00:29 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
 
-// sets up the reading in of the first file as well as execution of first 
-// command 
+// sets up the reading in of the first file as well
+// as execution of first command 
 // returns r_end of pipe it wrote to
 // returns -1 if error
 int	ft_handle_first(char *argv[], char *envp[])

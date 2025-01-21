@@ -6,13 +6,13 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 18:11:23 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/15 14:20:00 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/21 14:58:24 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-// translates files that have no ./ in front but should into ./file
+// translates files that have no ./ in front but should, into ./file
 // three cases:
 // works for absoulte paths like /home/sikunne/file.exe
 // and also for relative paths file.exe, ./file.exe, dir/file.exe

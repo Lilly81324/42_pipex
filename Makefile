@@ -8,8 +8,6 @@ ft_free_char_arr_arr.c \
 ft_get_path.c \
 ft_space_bef.c \
 ft_space_aft.c \
-ft_prepare_first.c \
-ft_prepare_sec.c \
 ft_stdin_to_infile.c \
 ft_stdin_to_pipe.c \
 ft_stdout_to_outfile.c \
