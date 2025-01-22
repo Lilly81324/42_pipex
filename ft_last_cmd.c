@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_last_cmd_bonus.c                                :+:      :+:    :+:   */
+/*   ft_last_cmd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:13:07 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/14 16:00:01 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/22 15:47:59 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@
 // frees path and argv given
 // returns read_end fd of pipe (needs closing)
 // returns -1 if error
-int	ft_last_cmd(char *path, char **argv, char *filename, int r_end)
+int	ft_last_cmd(char *path, char **argv, int r_end)
 {
 	pid_t	pid;
 
 	if (ft_stdin_to_pipe(r_end))
-		return (-1);
-	if (ft_stdout_to_outfile(filename) < 0)
 		return (-1);
 	pid = fork();
 	if (pid < 0)

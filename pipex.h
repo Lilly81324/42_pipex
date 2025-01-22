@@ -6,7 +6,7 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:42:19 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/21 15:05:50 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/22 15:48:19 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ char	**ft_split_quot_ex(char const *s, char c);
 // redirection of stdin and stdout
 int		ft_stdin_to_infile(char *filename);
 int		ft_stdin_to_pipe(int r_end);
-int		ft_stdout_to_outfile(char *filename);
+int		ft_stdout_to_outfile(char *filename, char *envp[]);
 int		ft_stdout_to_pipe(void);
 
 // for running the commands each (ft_handle_X calls ft_X_cmd)
 int		ft_handle_first(char *argv[], char *envp[]);
 int		ft_first_cmd(char *path, char **argv, char *filename);
 int		ft_handle_last(char *argv[], char *envp[], int r_end);
-int		ft_last_cmd(char *path, char **argv, char *filename, int r_end);
+int		ft_last_cmd(char *path, char **argv, int r_end);
 
 #endif
