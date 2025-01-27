@@ -6,7 +6,7 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:56:42 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/14 16:16:47 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/27 15:40:32 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(int argc, char *argv[], char *envp[])
 		perror("Too many arguments, only 4 are acceptable");
 		return (-1);
 	}
+	ft_stdout_to_outfile(argv[argc - 1], envp);
 	r_end = ft_handle_first(argv, envp);
 	if (r_end < 0)
 		return (-1);

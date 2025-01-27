@@ -6,7 +6,7 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:56:42 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/21 14:58:05 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/27 15:42:22 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int argc, char *argv[], char *envp[])
 		perror("Need at least 4 arguments <infile> <cmd1> <cmd2> <outfile>");
 		return (-1);
 	}
+	ft_stdout_to_outfile(argv[argc - 1], envp);
 	r_end = ft_handle_first(argv, envp);
 	if (r_end < 0)
 		return (-1);
