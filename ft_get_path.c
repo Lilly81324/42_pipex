@@ -6,7 +6,7 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 15:23:06 by sikunne           #+#    #+#             */
-/*   Updated: 2025/01/09 15:37:29 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/28 22:11:10 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ char	*ft_get_path(char **envp, char *cmd)
 	char	**paths;
 	char	*path;
 
-	if (cmd == NULL)
+	if (cmd == NULL || cmd[0] == '\0')
 	{
 		perror("No Command specified");
 		return (NULL);

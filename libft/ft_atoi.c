@@ -6,7 +6,7 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 13:56:04 by sikunne           #+#    #+#             */
-/*   Updated: 2024/11/16 11:46:17 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/28 21:59:33 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,8 @@
 // ACTUALLY doesnt do any of that because atoi doesnt
 static int	ft_st_limit(const char *nptr, int i, int fac)
 {
-	int				res;
 	long long int	temp;
 
-	res = 0;
 	temp = 0;
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{

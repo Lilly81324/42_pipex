@@ -6,7 +6,7 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:17:00 by sikunne           #+#    #+#             */
-/*   Updated: 2024/11/15 17:03:28 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/28 21:59:59 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,6 @@ static void	ft_st_dodigits(int n, int len, int fd)
 // gives the integer in the file descriptor fd out
 void	ft_putnbr_fd(int n, int fd)
 {
-	int		i;
-
-	i = 0;
 	if (n == -2147483648)
 	{
 		write(fd, "-2147483648", 11);

@@ -6,15 +6,12 @@
 /*   By: sikunne <sikunne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 10:35:41 by sikunne           #+#    #+#             */
-/*   Updated: 2024/11/15 14:03:30 by sikunne          ###   ########.fr       */
+/*   Updated: 2025/01/28 22:00:08 by sikunne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_tolower(int x)
 {
-	int	i;
-
-	i = 0;
 	if (x <= 90 && x >= 65)
 		return (x + 32);
 	return (x);
